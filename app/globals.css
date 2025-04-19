@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles that Tailwind doesn't directly support */
+.text-shadow-black-sm {
+  text-shadow: 0 0 5px black;
+}
+.text-shadow-black-md {
+  text-shadow: 0 0 10px black;
+}
+.text-stroke-black-3 {
+  -webkit-text-stroke: 3px black;
+  paint-order: stroke fill; /* 讓描邊在內 */
+}
+
+/* Animation for marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Shake animation */
+.shake {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.shake-rotate {
+  animation: shake-rotate 3s infinite;
+}
+
+@keyframes shake-rotate {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* Marquee container styles */
+.marquee-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.marquee-container-up {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  animation: marquee-up 30s linear infinite;
+}
+
+@keyframes marquee-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
