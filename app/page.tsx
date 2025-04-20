@@ -10,12 +10,10 @@ import Welcome from "@/components/Welcome"
 import FootMarquee from "@/components/FootMarquee"
 import Footer from "@/components/Footer"
 import GoTop from "@/components/GoTop"
-import Overlay from "@/components/Overlay"
 
 export default function Home() {
   return (
     <>
-      <Overlay />
       <Header />
       <main>
         <Banner />
