@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-hant-tw">
-      <body className="font-sans bg-[url('/images/慶生背景.jfif')] bg-center bg-cover bg-fixed overflow-x-hidden antialiased">
+      <body className="font-sans bg-center bg-cover bg-fixed overflow-x-hidden antialiased">
         {children}
       </body>
     </html>
