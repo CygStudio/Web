@@ -1,5 +1,4 @@
 import Header from "@/app/components/Header"
-import Banner from "@/app/components/Banner"
 import VideoSection from "@/app/components/VideoSection"
 import StandingSign from "@/app/components/StandingSign"
 import FanMessage from "@/app/components/FanMessage"
@@ -16,7 +15,6 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <Banner />
         <VideoSection />
         <StandingSign />
         <FanMessage />

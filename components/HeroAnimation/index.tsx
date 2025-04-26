@@ -64,10 +64,6 @@ export default function ImageAnimation({ onFinish }: { onFinish?: () => void }) 
             src="/animation/pigeon_back.webp"
             alt="Bird Animation"
             className="w-full h-full object-cover"
-            style={{
-              objectFit: 'contain',
-              filter: 'drop-shadow(0 0 10px rgba(0, 0, 0, 0.3))',
-            }}
           />
         </motion.div>
 
@@ -95,7 +91,7 @@ export default function ImageAnimation({ onFinish }: { onFinish?: () => void }) 
           {/* 羽毛 */}
           <motion.div
             className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none"
-            initial={{ y: -50, opacity: 0 }}
+            initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1, x: [0, 10, 0] }}
             transition={{
               duration: 4,
