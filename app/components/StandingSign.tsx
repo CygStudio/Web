@@ -1,25 +1,24 @@
-"use client"
+'use client'
 
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image'
+import Link from 'next/link'
+import StrokeText from '@/components/StrokeText'
 
 export default function StandingSign() {
   return (
     <section id="standing_sign" className="block w-4/5 mx-auto">
       <div className="travel_notes relative">
-        <h2 className="text-white text-[2vw] mb-5 ml-4 text-shadow-black-sm">熙遊記 Part2</h2>
+        <h2 className="font-bold my-5 text-3xl text-center">
+          <StrokeText text="婚叫 團結 強大 - 熙遊記" />
+        </h2>
+
         <Image
-          src="/placeholder.svg?height=600&width=800&query=travel photo"
+          src="https://www.xtremedeepfieldproject.com/images/%E7%86%99%E9%81%8A%E8%A8%98%E5%B0%81%E9%9D%A2.jpg"
           alt=""
-          width={800}
-          height={600}
-          className="block h-[40vw] w-[65%] ml-[18px] rounded-[10px]"
+          width={1920}
+          height={1080}
+          className="block w-full rounded-lg"
         />
-        <p className="absolute w-[30%] top-[18%] right-0 text-[1.8vw] p-[1%] text-white bg-[#332323] border-[3px] border-[#C5AC7E] rounded-[10px]">
-          三週年之際，女兒的紀念巴士正在這個島上行駛。 當時小姐說："如果有機會，我也想親眼看看"，
-          但現在看來，她並沒有得到機會。相反，我們想出了一個計劃，
-          帶我們的女兒Mochidori到這個島上旅行，在各個地方拍照，盡情享受島上的風景。
-        </p>
       </div>
       <div className="w-full mt-8">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
