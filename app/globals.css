@@ -80,22 +80,6 @@
   overflow: hidden;
 }
 
-.marquee-container-up {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  animation: marquee-up 30s linear infinite;
-}
-
-@keyframes marquee-up {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
 .iframe-container {
   position: relative;
   padding-bottom: 56.25%;
