@@ -1,61 +1,46 @@
-"use client"
+'use client'
 
-import Link from "next/link"
-import Image from "next/image"
+import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Header() {
+  const linkList = [
+    {
+      href: '/message',
+      text: 'Message',
+    },
+    {
+      href: '/film',
+      text: 'Film',
+    },
+    {
+      href: '/studio-activities',
+      text: '工作室活動',
+    },
+    {
+      href: '/post-credits-scenes',
+      text: '幕後花絮',
+    },
+  ]
+
   return (
-    <header className="z-[9999] block relative">
-      <nav
-        id="home"
-        className="fixed top-0 left-0 flex w-full items-center px-[70px] py-[30px] bg-gradient-to-t from-transparent to-black"
-      >
-        <div className="w-[5%] h-[5%]">
-          <Link href="/">
-            <Image src="/abstract-cygnus.png" alt="cygnus" width={50} height={50} />
-          </Link>
-        </div>
-        <ul className="menu flex list-none items-center basis-2/5 m-[1%] mt-2.5">
+    <header className="z-50 fixed top-0 left-0 w-full">
+      <nav id="home" className="w-full p-2 sm:p-4 bg-gradient-to-t from-transparent to-black">
+        <ul className="flex list-none items-center justify-center gap-2 w-fit">
           <li className="flex-1">
-            <Link
-              className="btn-1-2 block text-center text-[1.3vw] text-white no-underline border-l-2 border-white first:border-l-0 hover:bg-red-600 hover:text-white"
-              href="/"
-            >
-              Home
+            <Link href="/">
+              <Image src="/images/icon.webp" alt="cygnus" width={40} height={40} />
             </Link>
           </li>
-          <li className="flex-1">
-            <Link
-              className="btn-1-2 block text-center text-[1.3vw] text-white no-underline border-l-2 border-white first:border-l-0 hover:bg-red-600 hover:text-white"
-              href="/message"
-            >
-              Message
-            </Link>
-          </li>
-          <li className="flex-1">
-            <Link
-              className="btn-1-2 block text-center text-[1.3vw] text-white no-underline border-l-2 border-white first:border-l-0 hover:bg-red-600 hover:text-white"
-              href="/film"
-            >
-              Film
-            </Link>
-          </li>
-          <li className="flex-1">
-            <Link
-              className="btn-1-2 block text-center text-[1.3vw] text-white no-underline border-l-2 border-white first:border-l-0 hover:bg-red-600 hover:text-white"
-              href="/studio-activities"
-            >
-              工作室活動
-            </Link>
-          </li>
-          <li className="flex-1">
-            <Link
-              className="btn-1-2 block text-center text-[1.3vw] text-white no-underline border-l-2 border-white first:border-l-0 hover:bg-red-600 hover:text-white"
-              href="/post-credits-scenes"
-            >
-              幕後花絮
-            </Link>
-          </li>
+          {linkList.map((link, index) => (
+            <li key={index} className="flex-1 text-center text-xs sm:text-base font-semibold">
+              <Link
+                className="block text-white no-underline border-l-2 border-white first:border-l-0 hover:bg-red-600/50  text-nowrap p-1 rounded-sm"
+                href={link.href}>
+                {link.text}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

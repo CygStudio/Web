@@ -64,11 +64,6 @@ const config: Config = {
         "cygnus-gold": "#c7ab78",
         "cygnus-red": "#c02045",
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       keyframes: {
         "accordion-down": {
           from: {
