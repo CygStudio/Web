@@ -1,31 +1,37 @@
-import Image from "next/image"
+'use client'
+
+import Image from 'next/image'
+import StrokeText from '@/components/StrokeText'
+import { motion } from 'framer-motion'
 
 export default function NewFan() {
   return (
-    <section id="newfan" className="block relative h-screen w-full">
-      <div id="chick" className="shake shake-rotate absolute w-1/4 top-[31%] left-[13%]">
+    <section id="newfan" className="flex flex-col lg:flex-row items-center justify-center gap-10 min-h-screen">
+      <motion.div
+        id="chick"
+        className="w-1/2 md:w-1/3 rounded-full overflow-hidden"
+        animate={{ rotate: [0, 5, 0] }}
+        whileHover={{ rotate: [0, 5, 0], transition: { repeat: Infinity, duration: 0.05 } }}
+        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+      >
         <Image
-          src="/placeholder.svg?height=400&width=400&query=cute chick character"
+          src="/images/心雞拉奈.webp"
           alt=""
           width={400}
           height={400}
           className="block w-full rounded-[10px]"
         />
-      </div>
-      <div className="newfandialogbox absolute w-1/5 top-1/4 left-[39%]">
-        <Image
-          src="/placeholder.svg?height=200&width=300&query=dialog box"
-          alt=""
-          width={300}
-          height={200}
-          className="block w-full"
-        />
-      </div>
-      <div className="whatword absolute top-[43%] left-[43%]">
-        <h4 className="text-[6.5vw] text-white text-stroke-black-3 text-shadow-black-sm">什麼!!!!!</h4>
-      </div>
-      <div className="newfanword absolute top-[58%] left-[43%]">
-        <h4 className="text-[6.5vw] text-white text-stroke-black-3 text-shadow-black-sm">你竟然是新觀眾!!!</h4>
+      </motion.div>
+
+      <div className="">
+        <h4 className="text-5xl sm:text-[70px] font-bold">
+          <div>
+            <StrokeText text="什麼!!!!!" strokeColor="white" textColor="#293845" />
+          </div>
+          <div>
+            <StrokeText text="你竟然是新觀眾!!!" strokeColor="white" textColor="#293845" />
+          </div>
+        </h4>
       </div>
     </section>
   )
