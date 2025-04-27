@@ -12,7 +12,7 @@ const StrokeText: React.FC<StrokeTextProps> = ({
   text,
   textColor = 'white',
   strokeColor = 'black',
-  strokeWidth = '10',
+  strokeWidth = '5',
   textClass = '',
 }) => {
   return (
