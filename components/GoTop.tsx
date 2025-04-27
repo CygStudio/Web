@@ -1,44 +1,54 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import Image from "next/image"
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { useMobileViewport } from '@/hooks/use-mobile-viewport'
 
 export default function GoTop() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      const threshold = window.innerHeight * 2
+      if (window.scrollY > threshold) {
         setVisible(true)
       } else {
         setVisible(false)
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     })
   }
 
+  const { isMobile } = useMobileViewport()
+  const size = isMobile ? 90 : 120
+
   return (
-    <div
+    <motion.div
       id="gotop"
-      className={`${visible ? "block" : "hidden"} w-40 rounded-[5px] fixed bottom-12 right-5 p-[5px] cursor-pointer z-50`}
+      className="fixed bottom-12 right-5 cursor-pointer z-[999] w-fit"
       onClick={scrollToTop}
-    >
+      initial={{ opacity: 0 }}
+      animate={{ opacity: visible ? 1 : 0 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ rotate: -45, transition: { duration: 0.3 } }}>
       <Image
-        src="/placeholder.svg?height=60&width=60&query=up arrow"
+        src="/images/gotop.webp"
         alt="置頂按鈕"
-        width={60}
-        height={60}
-        className="block w-full"
+        width={size}
+        height={size}
+        className="block"
       />
-    </div>
+    </motion.div>
   )
 }
