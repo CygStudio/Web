@@ -6,7 +6,7 @@ import StrokeText from '@/components/StrokeText'
 
 export default function StandingSign() {
   return (
-    <section id="standing_sign" className="block w-4/5 mx-auto">
+    <section id="standing_sign" className="block max-w-5xl w-4/5 mx-auto my-4">
       <div className="travel_notes relative">
         <h2 className="font-bold my-5 text-3xl text-center">
           <StrokeText text="婚叫 團結 強大 - 熙遊記" />

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export default function Header() {
   const linkList = [
@@ -24,7 +25,12 @@ export default function Header() {
   ]
 
   return (
-    <header className="z-50 fixed top-0 left-0 w-full">
+    <motion.header
+      className="z-50 fixed top-0 left-0 w-full"
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 2, ease: 'easeOut' }}
+    >
       <nav id="home" className="w-full p-2 sm:p-4 bg-gradient-to-t from-transparent to-black">
         <ul className="flex list-none items-center justify-center gap-2 w-fit">
           <li className="flex-1">
@@ -43,6 +49,6 @@ export default function Header() {
           ))}
         </ul>
       </nav>
-    </header>
+    </motion.header>
   )
 }
