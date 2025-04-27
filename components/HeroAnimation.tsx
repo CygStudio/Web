@@ -3,9 +3,8 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function ImageAnimation({ onFinish }: { onFinish?: () => void }) {
+export default function ImageAnimation() {
   const [isLoaded, setIsLoaded] = useState(false)
-  const [showPigeonAnimation, setShowPigeonAnimation] = useState(false)
 
   useEffect(() => {
     // 設置一個短暫的延遲，確保組件已經掛載
@@ -15,17 +14,6 @@ export default function ImageAnimation({ onFinish }: { onFinish?: () => void }) 
 
     return () => clearTimeout(timer)
   }, [])
-
-  // 婚叫動畫延遲 2 秒開始
-  useEffect(() => {
-    if (isLoaded) {
-      const timer = setTimeout(() => {
-        setShowPigeonAnimation(true)
-      }, 2000)
-
-      return () => clearTimeout(timer)
-    }
-  }, [isLoaded])
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -51,9 +39,6 @@ export default function ImageAnimation({ onFinish }: { onFinish?: () => void }) 
           transition={{
             duration: 3,
             ease: 'easeOut',
-          }}
-          onAnimationComplete={() => {
-            if (onFinish) onFinish()
           }}>
           <img src="/animation/mask.webp" alt="Mask Image" className="w-full h-full object-cover" />
         </motion.div>
