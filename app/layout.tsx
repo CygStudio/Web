@@ -2,6 +2,7 @@ import type React from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
 
+import Header from '@/app/components/Header'
 import Banner from '@/app/components/Banner'
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-hant-tw">
       <body className="font-sans bg-center bg-cover bg-fixed overflow-x-hidden antialiased" style={{ backgroundImage: "url('/images/bg.webp')" }}>
+        <Header />
         <Banner />
         {children}
       </body>

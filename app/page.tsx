@@ -1,19 +1,17 @@
-import Header from "@/app/components/Header"
-import VideoSection from "@/app/components/VideoSection"
-import StandingSign from "@/app/components/StandingSign"
-import FanMessage from "@/app/components/FanMessage"
-import NewFan from "@/app/components/NewFan"
-import KnowCyg from "@/app/components/KnowCyg"
-import CygIntroduction from "@/app/components/CygIntroduction"
-import Welcome from "@/app/components/Welcome"
-import FootMarquee from "@/app/components/FootMarquee"
-import Footer from "@/app/components/Footer"
-import GoTop from "@/components/GoTop"
+import VideoSection from '@/app/components/VideoSection'
+import StandingSign from '@/app/components/StandingSign'
+import FanMessage from '@/app/components/FanMessage'
+import NewFan from '@/app/components/NewFan'
+import KnowCyg from '@/app/components/KnowCyg'
+import CygIntroduction from '@/app/components/CygIntroduction'
+import Welcome from '@/app/components/Welcome'
+import FootMarquee from '@/app/components/FootMarquee'
+import Footer from '@/app/components/Footer'
+import GoTop from '@/components/GoTop'
 
 export default function Home() {
   return (
     <>
-      <Header />
       <main>
         <VideoSection />
         <StandingSign />

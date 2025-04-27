@@ -3,25 +3,27 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useCygClick } from '@/hooks/use-cyg-click'
 
 export default function Header() {
-  const linkList = [
-    {
-      href: '/message',
-      text: 'Message',
-    },
-    {
-      href: '/film',
-      text: 'Film',
-    },
-    {
-      href: '/studio-activities',
-      text: '工作室活動',
-    },
-    {
-      href: '/post-credits-scenes',
-      text: '幕後花絮',
-    },
+  useCygClick()
+  const linkList: { href: string; text: string; }[] = [
+    // {
+    //   href: '/message',
+    //   text: 'Message',
+    // },
+    // {
+    //   href: '/film',
+    //   text: 'Film',
+    // },
+    // {
+    //   href: '/studio-activities',
+    //   text: '工作室活動',
+    // },
+    // {
+    //   href: '/post-credits-scenes',
+    //   text: '幕後花絮',
+    // },
   ]
 
   return (
