@@ -1,45 +1,21 @@
-import Image from "next/image"
-import Link from "next/link"
+import InfiniteMarquee from '@/components/InfiniteMarquee'
+import StrokeText from '@/components/StrokeText'
 
-export default function FanMessage() {
+export default async function Home() {
+  const items = await fetch('https://cygstudio.github.io/asset/message.json').then(res =>
+    res.json()
+  )
+
   return (
-    <section
-      id="fanmessage"
-      className="block relative z-[700] overflow-hidden h-[110vh] bg-[url('/images/message_brg.png')] w-full bg-center bg-cover"
-    >
-      <h3 className="absolute text-[30px] text-white ml-[30px] mt-5 text-shadow-black-sm">婚叫想對熙歌說的話 Part3</h3>
-      <div className="flex justify-end space-x-4 mr-20 p-2.5 h-[1500px] overflow-hidden">
-        <div className="pic w-[400px]">
-          <div className="marquee-container h-[1500px] w-[400px] overflow-hidden">
-            {Array.from({ length: 7 }).map((_, index) => (
-              <Link key={index} href="/message">
-                <Image
-                  src={`/placeholder.svg?height=400&width=400&query=fan message ${index + 1}`}
-                  width={400}
-                  height={400}
-                  alt=""
-                  className="mb-5 block w-full"
-                />
-              </Link>
-            ))}
-          </div>
-        </div>
-        <div className="picture w-[400px]">
-          <div className="marquee-container-up h-[1500px] w-[400px] overflow-hidden">
-            {Array.from({ length: 7 }).map((_, index) => (
-              <Link key={index} href="/message">
-                <Image
-                  src={`/placeholder.svg?height=400&width=400&query=fan message ${index + 8}`}
-                  width={400}
-                  height={400}
-                  alt=""
-                  className="mb-5 block w-full"
-                />
-              </Link>
-            ))}
-          </div>
-        </div>
+    <main className="flex flex-col lg:flex-row h-[200vh] lg:h-screen bg-[linear-gradient(to_bottom,#8d2a34_0%,#d16266_25%,#e7997c_50%,#d16266_75%,#8d2a34_100%)]">
+      <div className="flex-[2] relative bg-cover bg-center bg-no-repeat min-h-[100vh]" style={{ backgroundImage: 'url(/images/18a0793e589907a3.webp)' }}>
+        <h2 className="text-4xl font-bold text-white mt-8 ml-8">
+          <StrokeText text="婚叫們的祝福" />
+        </h2>
       </div>
-    </section>
+
+      {/* 跑馬燈區域 */}
+      <InfiniteMarquee className='flex-1 lg:min-w-[680px]' items={items} />
+    </main>
   )
 }
