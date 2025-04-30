@@ -5,25 +5,17 @@ import NewFan from '@/app/components/NewFan'
 import KnowCyg from '@/app/components/KnowCyg'
 import CygIntroduction from '@/app/components/CygIntroduction'
 import Welcome from '@/app/components/Welcome'
-import FootMarquee from '@/app/components/FootMarquee'
-import Footer from '@/app/components/Footer'
-import GoTop from '@/components/GoTop'
 
 export default function Home() {
   return (
     <>
-      <main>
-        <VideoSection />
-        <StandingSign />
-        <FanMessage />
-        <NewFan />
-        <KnowCyg />
-        <CygIntroduction />
-        <Welcome />
-      </main>
-      <FootMarquee />
-      <Footer />
-      <GoTop />
+      <VideoSection />
+      <StandingSign />
+      <FanMessage />
+      <NewFan />
+      <KnowCyg />
+      <CygIntroduction />
+      <Welcome />
     </>
   )
 }

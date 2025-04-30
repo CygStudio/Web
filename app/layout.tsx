@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 
 import Header from '@/app/components/Header'
 import Banner from '@/app/components/Banner'
+import FootMarquee from '@/app/components/FootMarquee'
+import Footer from '@/app/components/Footer'
+import GoTop from '@/components/GoTop'
 
 export const metadata: Metadata = {
   title: '熙歌工作室慶生網頁',
@@ -13,10 +16,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-hant-tw">
-      <body className="font-sans bg-center bg-cover bg-fixed overflow-x-hidden antialiased" style={{ backgroundImage: "url('/images/bg.webp')" }}>
+      <body
+        className="font-sans bg-center bg-cover bg-fixed overflow-x-hidden antialiased"
+        style={{ backgroundImage: "url('/images/bg.webp')" }}>
         <Header />
         <Banner />
-        {children}
+        <main>{children}</main>
+        <FootMarquee />
+        <Footer />
+        <GoTop />
       </body>
     </html>
   )
