@@ -1,8 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import StrokeText from '@/components/StrokeText'
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+import { useEffect, useState } from 'react'
 
-export default async function StandingSign() {
+export default function StandingSign() {
   type Item = {
     date: string
     name: string
@@ -11,9 +15,16 @@ export default async function StandingSign() {
     image: string
     info: string
   }
-  const items: Item[] = await fetch('https://cygstudio.github.io/asset/travel')
-    .then(res => res.json())
-    .catch(() => [])
+  const [items, setItems] = useState<Item[]>([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const items: Item[] = await fetch('https://cygstudio.github.io/asset/travel')
+        .then(res => res.json())
+        .catch(() => [])
+      setItems(items)
+    }
+    fetchData()
+  }, [])
 
   const ASSET_HOST = 'https://cygstudio.github.io/asset/'
 
@@ -33,22 +44,29 @@ export default async function StandingSign() {
         />
       </div>
       <div className="w-full mt-8">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
-          {items.map((item, index) => (
-            <div key={index} className="overflow-hidden">
-              <Link className="example-image-link block" href="#" data-lightbox="example-set">
-                <Image
-                  className="example-image block w-full scale-110 hover:scale-125 transition-transform duration-300 ease-out"
-                  src={ASSET_HOST + item.image}
-                  width={300}
-                  height={300}
-                  alt=""
-                  loading="lazy"
-                />
-              </Link>
-            </div>
-          ))}
-        </div>
+        <ResponsiveMasonry columnsCountBreakPoints={{
+          640: 2, // Tailwind's `sm`
+          768: 3, // Tailwind's `md`
+          1024: 4, // Tailwind's `lg`
+          1280: 5 // Tailwind's `xl`
+        }}>
+          <Masonry gutter="2rem">
+            {items.map((item, index) => (
+              <div key={index} className="overflow-hidden">
+                <Link className="example-image-link block" href="#" data-lightbox="example-set">
+                  <Image
+                    className="example-image block w-full scale-110 hover:scale-125 transition-transform duration-300 ease-out"
+                    src={ASSET_HOST + item.image}
+                    width={300}
+                    height={300}
+                    alt=""
+                    loading="lazy"
+                  />
+                </Link>
+              </div>
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
       </div>
     </section>
   )
