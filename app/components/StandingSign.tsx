@@ -1,10 +1,22 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import StrokeText from '@/components/StrokeText'
 
-export default function StandingSign() {
+export default async function StandingSign() {
+  type Item = {
+    date: string
+    name: string
+    dc: string
+    avatar: string
+    image: string
+    info: string
+  }
+  const items: Item[] = await fetch('https://cygstudio.github.io/asset/travel')
+    .then(res => res.json())
+    .catch(() => [])
+
+  const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+
   return (
     <section id="standing_sign" className="block max-w-5xl w-4/5 mx-auto my-4">
       <div className="travel_notes relative">
@@ -22,12 +34,12 @@ export default function StandingSign() {
       </div>
       <div className="w-full mt-8">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
-          {Array.from({ length: 16 }).map((_, index) => (
+          {items.map((item, index) => (
             <div key={index} className="overflow-hidden">
               <Link className="example-image-link block" href="#" data-lightbox="example-set">
                 <Image
                   className="example-image block w-full scale-110 hover:scale-125 transition-transform duration-300 ease-out"
-                  src={`/placeholder.svg?height=300&width=300&query=travel photo ${index + 1}`}
+                  src={ASSET_HOST + item.image}
                   width={300}
                   height={300}
                   alt=""
