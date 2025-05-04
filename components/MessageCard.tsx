@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import StrokeText from '@/components/StrokeText'
 
@@ -13,8 +16,13 @@ export interface MarqueeItem {
 const ASSET_HOST = 'https://cygstudio.github.io/asset/'
 
 export function MessageCard({ item }: { item: MarqueeItem }) {
+  const [isRead, setIsRead] = useState(false)
+
+  const readClass = isRead ? 'opacity-50' : 'opacity-100'
   return (
-    <div className="relative flex flex-col mx-4 mb-12 max-w-md">
+    <div
+      className={'relative flex flex-col mx-4 mb-12 max-w-md ' + readClass}
+      onClick={() => setIsRead(_isRead => !_isRead)}>
       {item.message && (
         <>
           {/* 上方鳥圖片 */}
