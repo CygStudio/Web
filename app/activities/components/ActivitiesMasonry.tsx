@@ -22,7 +22,7 @@ function FadeInWhenVisible({ children }: { children: React.ReactNode }) {
       initial={{ opacity: 0, y: 30 }}
       animate={controls}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className='flex-1'>
+      className="flex-1">
       {children}
     </motion.div>
   )
@@ -56,6 +56,36 @@ export default function ActivitiesMasonry() {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    if (!items.some(item => item.type === 'twitter')) return
+
+    if (!document.querySelector('script[src="https://platform.twitter.com/widgets.js"]')) {
+      const script = document.createElement('script')
+      script.src = 'https://platform.twitter.com/widgets.js'
+      script.async = true
+      script.charset = 'utf-8'
+      document.body.appendChild(script)
+    }
+
+    const handleResize = () => {
+      const twitter = (window as any)?.twttr
+      twitter?.widgets?.load?.()
+    }
+    handleResize()
+
+    // 監聽 resize 事件
+    window.addEventListener('resize', handleResize)
+
+    // 清除事件監聽器 和 Twitter 小部件
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      const script = document.querySelector('script[src="https://platform.twitter.com/widgets.js"]')
+      if (script) {
+        script.parentNode?.removeChild(script)
+      }
+    }
+  }, [items])
+
   if (items.length === 0) {
     return null
   }
@@ -83,31 +113,26 @@ export default function ActivitiesMasonry() {
 const Card = ({ item }: { item: Node }) => {
   const ASSET_HOST = 'https://cygstudio.github.io/asset/'
 
-    const Image = () => (
-      <img src={ASSET_HOST + item.content} alt={item.group} className="w-full h-auto" />
-    )
-    const YT = () => (
-      <div className="iframe-container" dangerouslySetInnerHTML={{ __html: item.content }} />
-    )
-    const Twitter = () => (
-      <div dangerouslySetInnerHTML={{ __html: item.content }} />
-    )
+  const Image = () => (
+    <img src={ASSET_HOST + item.content} alt={item.group} className="w-full h-auto" />
+  )
+  const YT = () => (
+    <div className="iframe-container" dangerouslySetInnerHTML={{ __html: item.content }} />
+  )
+  const Twitter = () => <div dangerouslySetInnerHTML={{ __html: item.content }} />
 
-    const Content = () => {
-      switch (item.type) {
-        case 'image':
-          return <Image />
-        case 'yt':
-          return <YT />
-        case 'twitter':
-          // return <Twitter />
-          return null
-        default:
-          return null
-      }
+  const Content = () => {
+    switch (item.type) {
+      case 'image':
+        return <Image />
+      case 'yt':
+        return <YT />
+      case 'twitter':
+        return <Twitter />
+      default:
+        return null
     }
+  }
 
-    return (
-      <Content />
-    )
+  return <Content />
 }
