@@ -44,16 +44,17 @@ export default function StandingSign() {
         />
       </div>
       <div className="w-full mt-8">
-        <ResponsiveMasonry columnsCountBreakPoints={{
-          640: 2, // Tailwind's `sm`
-          768: 3, // Tailwind's `md`
-          1024: 4, // Tailwind's `lg`
-          1280: 5 // Tailwind's `xl`
-        }}>
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{
+            640: 2, // Tailwind's `sm`
+            768: 3, // Tailwind's `md`
+            1024: 4, // Tailwind's `lg`
+            1280: 5, // Tailwind's `xl`
+          }}>
           <Masonry gutter="2rem">
             {items.map((item, index) => (
               <div key={index} className="overflow-hidden">
-                <Link className="example-image-link block" href="#" data-lightbox="example-set">
+                <Link className="relative block" href="#" data-lightbox="example-set">
                   <Image
                     className="example-image block w-full scale-110 hover:scale-125 transition-transform duration-300 ease-out"
                     src={ASSET_HOST + item.image}
@@ -62,6 +63,21 @@ export default function StandingSign() {
                     alt=""
                     loading="lazy"
                   />
+                  <div className="absolute bottom-0 right-0 px-1 font-semibold text-xs text-right">
+                    <StrokeText
+                      textColor="black"
+                      strokeColor="white"
+                      strokeWidth="2"
+                      text={item.name}
+                    />
+                    <span> </span>
+                    <StrokeText
+                      textColor="black"
+                      strokeColor="white"
+                      strokeWidth="2"
+                      text={` @${item.info}`}
+                    />
+                  </div>
                 </Link>
               </div>
             ))}

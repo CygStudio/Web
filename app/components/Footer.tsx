@@ -1,7 +1,14 @@
 export default function Footer() {
+  const now = new Date()
+  const year = now.getFullYear()
   return (
-    <footer className="z-[2] relative flex flex-col justify-center items-center text-center w-full h-[4vh] bg-[#BBFBD0]">
-      <p className="text-[2vh]">Copyright © 2023 熙歌慶生網頁｜by froggy</p>
+    <footer className="text-center w-full bg-[#BBFBD0] mb-6">
+      <p className="">
+        Copyright © {year} 熙歌慶生網頁｜by
+        <a href="https://sid.tw" target="_blank" rel="noopener noreferrer">
+          【叭噗叭噗】排氣管 Sid.tw
+        </a>
+      </p>
     </footer>
   )
 }
