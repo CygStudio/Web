@@ -1,7 +1,7 @@
 'use client'
 
 import { MessageCard, type MarqueeItem } from '@/components/MessageCard'
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+import { Masonry, ResponsiveMasonry } from '@/components/Masonry'
 import { useEffect, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'

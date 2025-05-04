@@ -3,8 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import StrokeText from '@/components/StrokeText'
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 import { useEffect, useState } from 'react'
+import { Masonry, ResponsiveMasonry } from '@/components/Masonry'
+
 
 export default function StandingSign() {
   type Item = {
