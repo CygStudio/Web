@@ -17,7 +17,7 @@ export default function Home() {
       <KnowCyg />
       <CygIntroduction />
       <AboutCyg />
-      {/* <Welcome /> */}
+      <Welcome />
     </>
   )
 }

@@ -7,7 +7,10 @@
   text-shadow: 0 0 5px black;
 }
 .text-shadow-black-md {
-  text-shadow: 0 0 10px black;
+  text-shadow: 0 0 5px black, 0 0 10px black;
+}
+.text-shadow-black-lg {
+  text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px black;
 }
 .text-stroke-black-3 {
   -webkit-text-stroke: 3px black;
