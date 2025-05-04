@@ -12,7 +12,7 @@ export default function CygIntroduction() {
           alt="熙歌介紹"
           width={800}
           height={800}
-          className="w-auto h-full"
+          className="lg:w-auto lg:h-full"
         />
       </div>
       <div className="hidden lg:block absolute top-[50%] -right-[20%] xl:-right-[10%] 2xl:right-0 translate-y-[-50%] h-full">

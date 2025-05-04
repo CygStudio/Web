@@ -5,7 +5,7 @@ export default function Welcome() {
   return (
     <section
       id="welcome"
-      className="block bg-[url('/images/rainbow.webp')] bg-center bg-cover bg-fixed antialiased">
+      className="block bg-[url('/images/rainbow.webp')] bg-center bg-cover bg-fixed antialiased supports-[background-attachment:fixed]:bg-fixed">
       <div className="flex flex-col text-white gap-4 font-semibold text-xl text-shadow-black-lg px-4 pt-8 container mx-auto">
         <h2 className="text-2xl">【熙歌工作室】</h2>
         <p>歡迎來到熙歌非官方粉絲群【熙歌工作室】！</p>

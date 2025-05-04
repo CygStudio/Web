@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-hant-tw">
       <body
-        className="font-sans bg-center bg-cover bg-fixed overflow-x-hidden antialiased"
+        className="font-sans bg-center bg-cover bg-fixed overflow-x-hidden antialiased supports-[background-attachment:fixed]:bg-fixed"
         style={{ backgroundImage: "url('/images/bg.webp')" }}>
         <Header />
         <Banner />
