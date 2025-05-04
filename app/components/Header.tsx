@@ -16,10 +16,10 @@ export default function Header() {
     //   href: '/film',
     //   text: 'Film',
     // },
-    // {
-    //   href: '/studio-activities',
-    //   text: '工作室活動',
-    // },
+    {
+      href: '/activities',
+      text: '工作室活動',
+    },
     // {
     //   href: '/post-credits-scenes',
     //   text: '幕後花絮',
