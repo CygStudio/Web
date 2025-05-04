@@ -8,10 +8,10 @@ import { useCygClick } from '@/hooks/use-cyg-click'
 export default function Header() {
   useCygClick()
   const linkList: { href: string; text: string; }[] = [
-    // {
-    //   href: '/message',
-    //   text: 'Message',
-    // },
+    {
+      href: '/message',
+      text: 'Message',
+    },
     // {
     //   href: '/film',
     //   text: 'Film',

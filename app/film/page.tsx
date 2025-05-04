@@ -2,9 +2,9 @@ import React from 'react'
 import VideoCarousel from './components/VideoCarousel'
 
 export default async function FilmPage() {
-  const items = await fetch('https://cygstudio.github.io/asset/videos.json').then(res =>
-    res.json()
-  )
+  const items = await fetch('https://cygstudio.github.io/asset/video')
+    .then(res => res.json())
+    .catch(() => [])
   
   return (
     <>
