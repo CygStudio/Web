@@ -20,9 +20,7 @@ export function MessageCard({ item }: { item: MarqueeItem }) {
 
   const readClass = isRead ? 'opacity-50' : 'opacity-100'
   return (
-    <div
-      className={'relative flex flex-col mx-4 mb-12 max-w-md ' + readClass}
-      onClick={() => setIsRead(_isRead => !_isRead)}>
+    <div className={'relative flex flex-col mx-4 mb-12 max-w-md cursor-pointer ' + readClass}>
       {item.message && (
         <>
           {/* 上方鳥圖片 */}
@@ -51,9 +49,11 @@ export function MessageCard({ item }: { item: MarqueeItem }) {
       )}
 
       {/* 底部用戶資訊 */}
-      <div className="flex items-center justify-center mt-2">
+      <div
+        className="flex items-center justify-center mt-2"
+        onClick={() => setIsRead(_isRead => !_isRead)}>
         {/* 頭像 */}
-        <div className="w-12 h-12 rounded-full bg-pink-300 flex items-center justify-center mr-3 overflow-hidden">
+        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mr-3 overflow-hidden shrink-0">
           <Image src={ASSET_HOST + item.avatar} alt={item.name} width={48} height={48} />
         </div>
 

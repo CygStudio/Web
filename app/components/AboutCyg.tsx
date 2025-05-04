@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 export default function ScrollAnimation() {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-24 text-[#293845]">
+    <section className="container mx-auto px-4 py-24 text-[#293845]">
       {/* Row 1: Text left, Image right */}
       <AnimatedRow imagePosition="right" imageUrl="/images/QC.webp">
         <div className="flex flex-col justify-center gap-4">
