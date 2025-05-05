@@ -5,6 +5,8 @@ import { Masonry, ResponsiveMasonry } from '@/components/Masonry'
 import { useEffect, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import until from '@/utils/until'
+import { debounce } from 'lodash-es'
 
 function FadeInWhenVisible({ children }: { children: React.ReactNode }) {
   const controls = useAnimation()
@@ -67,10 +69,13 @@ export default function ActivitiesMasonry() {
       document.body.appendChild(script)
     }
 
-    const handleResize = () => {
+    const handleResize = debounce(async () => {
       const twitter = (window as any)?.twttr
+      const isReady = await until(() => Boolean(twitter?.widgets?.load))
+      if (!isReady) console.error('Twitter widgets.js not loaded')
+
       twitter?.widgets?.load?.()
-    }
+    }, 1000)
     handleResize()
 
     // 監聽 resize 事件
