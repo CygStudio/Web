@@ -12,10 +12,10 @@ export default function Header() {
       href: '/message',
       text: 'Message',
     },
-    // {
-    //   href: '/film',
-    //   text: 'Film',
-    // },
+    {
+      href: '/film',
+      text: 'Film',
+    },
     {
       href: '/activities',
       text: '工作室活動',
