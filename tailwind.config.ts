@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
   darkMode: ["class"],
@@ -108,6 +109,12 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(function({ addVariant }) {
+      addVariant('ios', '@supports (-webkit-touch-callout: none)')
+      addVariant('-ios', '@supports not (-webkit-touch-callout: none)')
+    }),
+  ],
 }
 export default config
