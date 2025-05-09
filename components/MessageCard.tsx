@@ -44,7 +44,7 @@ export function MessageCard({ item }: { item: MarqueeItem }) {
 
       {item.image && (
         <div className="relative mt-2">
-          <img src={ASSET_HOST + item.image} alt="Message Image" className="w-full h-auto" />
+          <Image width={500} height={500} src={ASSET_HOST + item.image} alt="Message Image" className="w-full h-auto" />
         </div>
       )}
 
