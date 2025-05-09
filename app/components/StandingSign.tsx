@@ -2,20 +2,23 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import clsx from 'clsx'
+import { noop } from 'lodash-es'
 import StrokeText from '@/components/StrokeText'
 import { useEffect, useState } from 'react'
 import { Masonry, ResponsiveMasonry } from '@/components/Masonry'
+import { Lightbox } from '@/components/Lightbox'
 
+type Item = {
+  date: string
+  name: string
+  dc: string
+  avatar: string
+  image: string
+  info: string
+}
 
 export default function StandingSign() {
-  type Item = {
-    date: string
-    name: string
-    dc: string
-    avatar: string
-    image: string
-    info: string
-  }
   const [items, setItems] = useState<Item[]>([])
   useEffect(() => {
     const fetchData = async () => {
@@ -26,8 +29,7 @@ export default function StandingSign() {
     }
     fetchData()
   }, [])
-
-  const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null)
 
   return (
     <section id="standing_sign" className="block container w-4/5 mx-auto my-4">
@@ -55,36 +57,57 @@ export default function StandingSign() {
           <Masonry gutter="2rem">
             {items.map((item, index) => (
               <div key={index} className="overflow-hidden">
-                <Link className="relative block" href="#" data-lightbox="example-set">
-                  <Image
-                    className="example-image block w-full scale-110 hover:scale-125 transition-transform duration-300 ease-out"
-                    src={ASSET_HOST + item.image}
-                    width={300}
-                    height={300}
-                    alt=""
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 right-0 px-1 font-semibold text-xs text-right">
-                    <StrokeText
-                      textColor="black"
-                      strokeColor="white"
-                      strokeWidth="2"
-                      text={item.name}
-                    />
-                    <span> </span>
-                    <StrokeText
-                      textColor="black"
-                      strokeColor="white"
-                      strokeWidth="2"
-                      text={` @${item.info}`}
-                    />
-                  </div>
-                </Link>
+                <MasonryItem
+                  item={item}
+                  index={index}
+                  onClick={() => setCurrentIndex(index)}
+                  imgClassName="w-full hover:scale-125 transition-transform duration-300 ease-out"
+                />
               </div>
             ))}
           </Masonry>
         </ResponsiveMasonry>
       </div>
+      <Lightbox
+        items={items.map((item, index) => (
+          <MasonryItem key={index} item={item} index={index} className="w-full h-full" imgClassName='w-full h-full object-cover object-center' />
+        ))}
+        currentIndex={currentIndex}
+        onIndexChange={setCurrentIndex}
+      />
     </section>
+  )
+}
+
+const MasonryItem = ({
+  item,
+  index,
+  onClick = noop,
+  className = '',
+  imgClassName = '',
+}: {
+  item: Item
+  index: number
+  onClick?: () => void
+  className?: string
+  imgClassName?: string
+}) => {
+  const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+
+  return (
+    <div key={index} className={clsx('relative cursor-pointer', className)} onClick={onClick}>
+      <Image
+        className={clsx(imgClassName)}
+        src={ASSET_HOST + item.image}
+        width={300}
+        height={300}
+        alt=""
+        loading="lazy"
+      />
+      <div className="absolute bottom-0 right-0 px-1 font-semibold text-xs text-right">
+        <StrokeText textColor="black" strokeColor="white" strokeWidth="2" text={item.name} />
+        <StrokeText textColor="black" strokeColor="white" strokeWidth="2" text={` @${item.info}`} />
+      </div>
+    </div>
   )
 }
