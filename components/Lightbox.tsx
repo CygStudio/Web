@@ -52,7 +52,7 @@ export function Lightbox({ items, currentIndex, onIndexChange }: LightboxProps) 
       onOpenChange={isOpen => onIndexChange(isOpen ? currentIndex : null)}>
       <DialogOverlay className="bg-black/30" />
       <DialogContent
-        className="max-w-full h-screen sm:max-w-3xl border-none bg-transparent shadow-none p-0 flex items-center justify-center"
+        className="max-w-full h-screen sm:max-w-5xl border-none bg-transparent shadow-none p-0 flex items-center justify-center"
         onKeyDown={handleKeyDown}
         tabIndex={0}>
         <VisuallyHidden>

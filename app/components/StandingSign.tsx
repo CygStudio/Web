@@ -70,7 +70,7 @@ export default function StandingSign() {
       </div>
       <Lightbox
         items={items.map((item, index) => (
-          <MasonryItem key={index} item={item} index={index} className="w-full h-full" imgClassName='w-full h-full object-cover object-center' />
+          <MasonryItem key={index} item={item} index={index} className="w-full h-full" imgClassName='w-full h-full object-contain object-center' />
         ))}
         currentIndex={currentIndex}
         onIndexChange={setCurrentIndex}

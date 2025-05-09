@@ -5,8 +5,16 @@ import { Masonry, ResponsiveMasonry } from '@/components/Masonry'
 import { useEffect, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { Lightbox } from '@/components/Lightbox'
+import { noop } from 'lodash-es'
 
-function FadeInWhenVisible({ children }: { children: React.ReactNode }) {
+function FadeInWhenVisible({
+  children,
+  onClick = noop,
+}: {
+  children: React.ReactNode
+  onClick?: () => void
+}) {
   const controls = useAnimation()
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
@@ -22,7 +30,8 @@ function FadeInWhenVisible({ children }: { children: React.ReactNode }) {
       initial={{ opacity: 0, y: 30 }}
       animate={controls}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-    >
+      onClick={onClick}
+      className="w-full">
       {children}
     </motion.div>
   )
@@ -30,6 +39,8 @@ function FadeInWhenVisible({ children }: { children: React.ReactNode }) {
 
 export default function MessageMasonry() {
   const [items, setItems] = useState<MarqueeItem[]>([])
+
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,19 +56,28 @@ export default function MessageMasonry() {
   const ASSET_HOST = 'https://cygstudio.github.io/asset/'
 
   return (
-    <ResponsiveMasonry
-      columnsCountBreakPoints={{
-        640: 2, // Tailwind's `sm`
-        768: 3, // Tailwind's `md`
-        1024: 4, // Tailwind's `lg`
-      }}>
-      <Masonry gutter="2rem">
-        {items.map((item, index) => (
-          <FadeInWhenVisible key={index}>
-            <MessageCard item={item} />
-          </FadeInWhenVisible>
+    <>
+      <ResponsiveMasonry
+        columnsCountBreakPoints={{
+          640: 2, // Tailwind's `sm`
+          768: 3, // Tailwind's `md`
+          1024: 4, // Tailwind's `lg`
+        }}>
+        <Masonry gutter="2rem">
+          {items.map((item, index) => (
+            <FadeInWhenVisible key={index} onClick={() => setCurrentIndex(index)}>
+              <MessageCard item={item} />
+            </FadeInWhenVisible>
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
+      <Lightbox
+        items={items.map(item => (
+          <MessageCard item={item} />
         ))}
-      </Masonry>
-    </ResponsiveMasonry>
+        currentIndex={currentIndex}
+        onIndexChange={setCurrentIndex}
+      />
+    </>
   )
 }
