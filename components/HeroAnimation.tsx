@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useToggle } from '@reactuses/core'
 
 export default function ImageAnimation() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -15,8 +16,10 @@ export default function ImageAnimation() {
     return () => clearTimeout(timer)
   }, [])
 
+  const [isDark, toggleIsDark] = useToggle(false)
+
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden" onDoubleClick={toggleIsDark}>
       {/* 容器 - 控制整體縮放 */}
       <motion.div
         className="absolute inset-0 w-full h-full flex items-center justify-center"
@@ -44,7 +47,11 @@ export default function ImageAnimation() {
         </motion.div>
         {/* 主圖層 */}
         <div className="absolute inset-0 w-full h-full">
-          <img src="/animation/base.webp" alt="Main Image" className="w-full h-full object-cover" />
+          <img
+            src={isDark ? '/animation/dark_base.webp' : '/animation/base.webp'}
+            alt="Main Image"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* 後婚叫 */}
@@ -62,7 +69,7 @@ export default function ImageAnimation() {
             },
           }}>
           <img
-            src="/animation/pigeon_back.webp"
+            src={isDark ? '/animation/dark_pigeon_back.webp' : '/animation/pigeon_back.webp'}
             alt="Bird Animation"
             className="w-full h-full object-cover"
           />
@@ -87,7 +94,7 @@ export default function ImageAnimation() {
           },
         }}>
         <img
-          src="/animation/feather.webp"
+          src={isDark ? '/animation/dark_feather.webp' : '/animation/feather.webp'}
           alt="Bird Animation"
           className="w-auto h-auto max-w-full max-h-full"
           style={{
@@ -117,7 +124,7 @@ export default function ImageAnimation() {
           },
         }}>
         <img
-          src="/animation/pigeon_front.webp"
+          src={isDark ? '/animation/dark_pigeon_front.webp' : '/animation/pigeon_front.webp'}
           alt="Bird Animation"
           className="w-auto h-auto max-w-full max-h-full -ml-[10%] -mb-[15%]"
           style={{
