@@ -59,14 +59,14 @@ export function Lightbox({ items, currentIndex, onIndexChange }: LightboxProps) 
           <DialogTitle>Lightbox</DialogTitle>
         </VisuallyHidden>
         <div className="relative w-full h-full flex items-center justify-center">
-          <Button
+          {/* <Button
             variant="ghost"
             size="icon"
             className="absolute top-4 right-4 z-50 rounded-full bg-black/20 hover:bg-black/40 text-white"
             onClick={() => onIndexChange(null)}>
             <X className="h-5 w-5" />
             <span className="sr-only">關閉</span>
-          </Button>
+          </Button> */}
 
           {items.length > 1 && (
             <>
