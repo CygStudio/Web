@@ -100,9 +100,10 @@ export default function ActivitiesMasonry() {
   return (
     <ResponsiveMasonry
       columnsCountBreakPoints={{
+        480: 1,
         640: 2, // Tailwind's `sm`
-        768: 3, // Tailwind's `md`
-        1024: 4, // Tailwind's `lg`
+        768: 2, // Tailwind's `md`
+        1024: 3, // Tailwind's `lg`
       }}>
       <Masonry gutter="2rem">
         {items.map((item, index) => (

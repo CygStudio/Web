@@ -9,7 +9,7 @@ export default function VideoSection() {
       <div className="max-w-[720px] mx-auto">
         <div className="iframe-container mx-auto">
           <iframe
-            src="https://www.youtube.com/embed/l3Gkmro5piU"
+            src="https://www.youtube.com/embed/E739HotYZ4k"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen

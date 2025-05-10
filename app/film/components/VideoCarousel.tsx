@@ -37,11 +37,16 @@ const baseSwiperParameters: SwiperProps = {
     dynamicMainBullets: 6,
     clickable: true,
   },
-  slidesPerView: 2,
+  slidesPerView: 1,
   spaceBetween: 20,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+    },
   },
 }
 
