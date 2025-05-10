@@ -38,7 +38,7 @@ export default function CygIntroduction() {
         <ListItem title="特技">5速嘴 釣魚(被釣、自釣) 抬棺 結紮 人見人愛;花見花開 輕聲熙語 開船</ListItem>
         <ListItem title="出道日">2022/11/28</ListItem>
         <li className="list-none">
-          <span className="word text-[2.1vh] text-[#C5AC7E]">
+          <span className="word text-xl text-[#C5AC7E]">
             #迷因擔當 #極深空 台語擔當 <del>#氣質擔當</del>
           </span>
         </li>
@@ -83,11 +83,11 @@ export default function CygIntroduction() {
 
 const ListItem = ({ title, children }: { title: string; children: React.ReactNode }) => {
   return (
-    <li className="list-none">
-      <span className="title inline-block px-1 bg-[#C5AC7E] text-[#1f1213] text-[2.1vh] font-[550] border-2 border-x-4 border-[#C5AC7E] rounded-[10px]">
+    <li className="list-none text-xl">
+      <span className="title inline-block px-1 bg-[#C5AC7E] text-[#1f1213] font-[550] border-2 border-x-4 border-[#C5AC7E] rounded-[10px]">
         {title}
       </span>
-      <span className="word ml-2 text-[2.1vh] text-[#C5AC7E]">{children}</span>
+      <span className="word ml-2 text-[#C5AC7E]">{children}</span>
     </li>
   )
 }

@@ -28,7 +28,7 @@ export function MobileMenu({ navItems, children }: MobileMenuProps) {
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-[250px] sm:w-[300px] bg-rose-700 border-black">
+      <SheetContent side="left" className="w-[250px] sm:w-[300px] bg-rose-800/90 border-black">
         <SheetHeader>
           <Link
             href='/'
