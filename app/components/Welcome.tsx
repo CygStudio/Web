@@ -1,11 +1,15 @@
 import Image from 'next/image'
 import StrokeText from '@/components/StrokeText'
+import clsx from 'clsx'
 
 export default function Welcome() {
   return (
     <section
       id="welcome"
-      className="block bg-[url('/images/rainbow.webp')] bg-center bg-cover antialiased -ios:bg-fixed">
+      className={clsx([
+        "block bg-[url('/images/rainbow.webp')] bg-center bg-cover antialiased",
+        '-safari:bg-fixed',
+      ])}>
       <div className="flex flex-col text-white gap-4 font-semibold text-xl text-shadow-black-lg px-4 pt-8 container mx-auto">
         <h2 className="text-2xl">【熙歌工作室】</h2>
         <p>歡迎來到熙歌非官方粉絲群【熙歌工作室】！</p>
@@ -39,9 +43,9 @@ export default function Welcome() {
             <Image
               src="/icon/dc.webp"
               alt="Discord icon"
-              width={40}
-              height={40}
-              className="block w-full mt-12 ml-2 animate-wiggle shadow-[0_4px_24px_0_rgba(255,255,255,0.7)] rounded-full"
+              width={30}
+              height={30}
+              className="block w-full ml-2 animate-wiggle shadow-[0_4px_24px_0_rgba(255,255,255,0.7)] rounded-full"
             />
           </a>
         </div>

@@ -112,8 +112,10 @@ const config: Config = {
   plugins: [
     require("tailwindcss-animate"),
     plugin(function({ addVariant }) {
-      addVariant('ios', '@supports (-webkit-touch-callout: none)')
-      addVariant('-ios', '@supports not (-webkit-touch-callout: none)')
+      addVariant('ios', 'html.ios &')
+      addVariant('-ios', 'html:not(.ios) &')
+      addVariant('safari', 'html.safari &')
+      addVariant('-safari', 'html:not(.safari) &')
     }),
   ],
 }
