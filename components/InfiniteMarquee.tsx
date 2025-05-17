@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect, type ReactNode } from 'react'
-// import { motion } from 'framer-motion'
 import { MessageCard, type MarqueeItem } from './MessageCard'
 
 interface InfiniteMarqueeProps {
@@ -58,9 +57,9 @@ export default function InfiniteMarquee({ items, className }: InfiniteMarqueePro
         </div>
       </div>
 
-      {/* 手機版：單一跑馬燈 */}
-      <div className="sm:hidden w-full h-full overflow-hidden">
-        <div className="flex flex-col items-center gap-4 py-4 animate-marquee-up hover:[animation-play-state:paused]">
+      {/* 手機版：單一跑馬燈，使用長按事件處理 */}
+      <div className="sm:hidden w-full h-full overflow-hidden select-none">
+        <div className="flex flex-col items-center gap-4 py-4 animate-marquee-up">
           <Duplicate>
             {firstHalf.map(item => (
               <MessageCard key={`repeat-${item.date}`} item={item} />
