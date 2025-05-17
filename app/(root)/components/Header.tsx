@@ -26,10 +26,10 @@ export default function Header() {
       href: '/activities',
       text: '工作室活動',
     },
-    // {
-    //   href: '/post-credits-scenes',
-    //   text: '幕後花絮',
-    // },
+    {
+      href: '/members',
+      text: '幕後花絮',
+    },
   ]
 
   return (
