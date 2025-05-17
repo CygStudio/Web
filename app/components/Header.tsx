@@ -5,10 +5,15 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useCygClick } from '@/hooks/use-cyg-click'
 import { MobileMenu } from '@/components/NavMenu'
+import clsx from 'clsx'
 
 export default function Header() {
   useCygClick()
   const linkList: { href: string; text: string }[] = [
+    {
+      href: '/',
+      text: 'Home',
+    },
     {
       href: '/message',
       text: 'Message',
@@ -35,10 +40,16 @@ export default function Header() {
       transition={{ duration: 2, ease: 'easeOut' }}>
       <nav id="home" className="w-full p-4 bg-gradient-to-t from-transparent to-black">
         <MobileMenu navItems={linkList}>
-          <Image src="/images/icon.webp" alt="cygnus" width={40} height={40} className='hover:scale-110' />
+          <Image
+            src="/images/icon.webp"
+            alt="cygnus"
+            width={40}
+            height={40}
+            className="hover:scale-110"
+          />
         </MobileMenu>
-        <ul className="hidden md:flex list-none items-center justify-center gap-2 w-fit">
-          <li className="flex-1">
+        <ul className="hidden sm:flex list-none items-center justify-center w-full max-w-xl">
+          <li className="grow-0">
             <Link href="/">
               <Image src="/images/icon.webp" alt="cygnus" width={40} height={40} />
             </Link>
@@ -46,9 +57,12 @@ export default function Header() {
           {linkList.map((link, index) => (
             <li
               key={index}
-              className="flex-1 text-center text-xs sm:text-base font-semibold">
+              className={clsx(
+                'flex-1 text-center text-xs sm:text-base font-semibold hover:bg-red-600/50',
+                index !== 0 && 'border-l-2 border-white'
+              )}>
               <Link
-                className="block text-white no-underline border-l-2 border-white first:border-l-0 hover:bg-red-600/50  text-nowrap p-1 rounded-sm"
+                className="block text-white no-underline border-l-2 border-white first:border-l-0 text-nowrap p-1 rounded-sm"
                 href={link.href}>
                 {link.text}
               </Link>
