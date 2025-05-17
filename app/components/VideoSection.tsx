@@ -2,8 +2,8 @@ import StrokeText from '@/components/StrokeText'
 
 export default function VideoSection() {
   return (
-    <section id="video">
-      <h2 className="font-bold my-5 text-3xl text-center">
+    <section id="video" className='pt-5'>
+      <h2 className="font-bold mb-5 text-3xl text-center">
         <StrokeText text="慶生影片" />
       </h2>
       <div className="max-w-[720px] mx-auto">

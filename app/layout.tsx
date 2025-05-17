@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Banner />
         <main
           className={clsx(
-            "block bg-[url('/images/bg.webp')] bg-center bg-cover antialiased",
+            "block bg-[url('/images/bg.webp')] bg-center bg-cover antialiased relative",
             '-safari:bg-fixed'
           )}>
           {children}
