@@ -11,7 +11,9 @@ const useBrowserTag = () => {
     if (isSafari || isIOS) {
       document.documentElement.classList.add('safari')
     }
-    document.documentElement.classList.add(browserName.toLowerCase())
+    // 確保 browserName 只包含有效的類名字符
+    const safeBrowserName = browserName.toLowerCase().replace(/[^a-z0-9-]/g, '-')
+    document.documentElement.classList.add(safeBrowserName)
   }, [])
 
   return { browserName, isSafari, isIOS }
