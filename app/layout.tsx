@@ -16,14 +16,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-hant-tw">
-        <body className="font-sans overflow-x-hidden antialiased">
-        <div
-          className="fixed top-0 left-0 w-full h-full -z-10 bg-center bg-cover"
-          style={{ backgroundImage: "url('/images/bg.webp')" }}
-        />
+      <body className="font-sans overflow-x-hidden antialiased">
         <Header />
         <Banner />
-        <main>{children}</main>
+        <main className="block bg-[url('/images/bg.webp')] bg-center bg-cover antialiased -ios:bg-fixed">
+          {children}
+        </main>
         <FootMarquee />
         <Footer />
         <GoTop />

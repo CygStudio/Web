@@ -11,7 +11,7 @@ export default function ImageAnimation() {
     // 設置一個短暫的延遲，確保組件已經掛載
     const timer = setTimeout(() => {
       setIsLoaded(true)
-    }, 300)
+    }, 1000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -29,7 +29,7 @@ export default function ImageAnimation() {
   const willChangeStyle = useMemo(() => ({ willChange: 'transform, opacity' }), [])
 
   return (
-    <div className="relative w-full h-screen overflow-hidden" onDoubleClick={toggleIsDark}>
+    <div className="relative w-full h-full overflow-hidden select-none" onDoubleClick={toggleIsDark}>
       {/* 容器 - 控制整體縮放 */}
       <motion.div
         className="absolute inset-0 w-full h-full flex items-center justify-center"
