@@ -11,8 +11,14 @@ import { ClientHooks } from '@/components/ClientHooks'
 import clsx from 'clsx'
 
 export const metadata: Metadata = {
-  title: '熙歌工作室慶生網頁',
-  description: '熙歌工作室慶生網頁',
+  title: '2025 熙歌工作室慶生網頁',
+  description: '熙歌工作室 2025 隆重鉅獻，歡迎加入婚叫溫暖的大家庭',
+  icons: {
+    icon: '/images/icon.webp'
+  },
+  openGraph: {
+    images: '/images/QC.webp'
+  }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -25,8 +31,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main
           className={
             clsx('relative')
-            // "block bg-[url('/images/bg.webp')] bg-center bg-cover antialiased relative",
-            // '-safari:bg-fixed'
           }>
           <div
             className="sticky top-0 w-screen h-screen bg-center bg-cover -mb-[100dvh]"
