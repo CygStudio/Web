@@ -10,7 +10,6 @@ import 'swiper/css/pagination'
 import 'swiper/css/effect-coverflow'
 
 type VideoInfo = {
-  id: string
   url: string
   img: string
 }
@@ -89,7 +88,7 @@ const VideoCarousel = ({ videoData }: { videoData: VideoData[] }) => {
               }
             }
             return renderSlides.map((video, videoIndex) => (
-              <SwiperSlide key={`${video.id}-${videoIndex}`} className="video-slide h-auto">
+              <SwiperSlide key={`${video.url}-${videoIndex}`} className="video-slide h-auto">
                 <VideoSlide video={video} />
               </SwiperSlide>
             ))
@@ -135,7 +134,7 @@ const VideoSlide = ({ video }: { video: VideoInfo }) => (
       <img
         className="card-img-top img-fluid w-full h-auto aspect-video object-cover"
         src={video.img}
-        alt={`Video thumbnail ${video.id}`}
+        alt={`Video thumbnail ${video.url}`}
         loading="lazy"
       />
       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity">
