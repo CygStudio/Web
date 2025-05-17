@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState, useMemo } from 'react'
+import { motion } from 'framer-motion'
 import { useToggle } from '@reactuses/core'
 
 export default function ImageAnimation() {
@@ -11,18 +11,29 @@ export default function ImageAnimation() {
     // 設置一個短暫的延遲，確保組件已經掛載
     const timer = setTimeout(() => {
       setIsLoaded(true)
-    }, 100)
+    }, 300)
 
     return () => clearTimeout(timer)
   }, [])
 
   const [isDark, toggleIsDark] = useToggle(false)
 
+  // 圖片路徑 useMemo 優化
+  const maskSrc = useMemo(() => '/animation/mask.webp', [])
+  const baseSrc = useMemo(() => (isDark ? '/animation/dark_base.webp' : '/animation/base.webp'), [isDark])
+  const pigeonBackSrc = useMemo(() => (isDark ? '/animation/dark_pigeon_back.webp' : '/animation/pigeon_back.webp'), [isDark])
+  const featherSrc = useMemo(() => (isDark ? '/animation/dark_feather.webp' : '/animation/feather.webp'), [isDark])
+  const pigeonFrontSrc = useMemo(() => (isDark ? '/animation/dark_pigeon_front.webp' : '/animation/pigeon_front.webp'), [isDark])
+
+  // will-change style
+  const willChangeStyle = useMemo(() => ({ willChange: 'transform, opacity' }), [])
+
   return (
     <div className="relative w-full h-screen overflow-hidden" onDoubleClick={toggleIsDark}>
       {/* 容器 - 控制整體縮放 */}
       <motion.div
         className="absolute inset-0 w-full h-full flex items-center justify-center"
+        style={willChangeStyle}
         initial={{ scale: 3, y: '20%' }}
         animate={{
           scale: isLoaded ? 1 : 3,
@@ -35,6 +46,7 @@ export default function ImageAnimation() {
         {/* 遮罩圖層 */}
         <motion.div
           className="absolute inset-0 w-full h-full bg-black z-10"
+          style={willChangeStyle}
           initial={{ opacity: 1 }}
           animate={{
             opacity: isLoaded ? 0 : 1,
@@ -43,12 +55,12 @@ export default function ImageAnimation() {
             duration: 3,
             ease: 'easeOut',
           }}>
-          <img src="/animation/mask.webp" alt="Mask Image" className="w-full h-full object-cover" />
+          <img src={maskSrc} alt="Mask Image" className="w-full h-full object-cover" />
         </motion.div>
         {/* 主圖層 */}
         <div className="absolute inset-0 w-full h-full">
           <img
-            src={isDark ? '/animation/dark_base.webp' : '/animation/base.webp'}
+            src={baseSrc}
             alt="Main Image"
             className="w-full h-full object-cover"
           />
@@ -57,8 +69,9 @@ export default function ImageAnimation() {
         {/* 後婚叫 */}
         <motion.div
           className="absolute inset-0 w-full h-full"
+          style={willChangeStyle}
           initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1, x: [0, 5, 0] }}
+          animate={isLoaded ? { y: 0, opacity: 1, x: [0, 5, 0] } : { y: -50, opacity: 0, x: 0 }}
           transition={{
             duration: 4,
             ease: 'easeOut',
@@ -69,20 +82,19 @@ export default function ImageAnimation() {
             },
           }}>
           <img
-            src={isDark ? '/animation/dark_pigeon_back.webp' : '/animation/pigeon_back.webp'}
+            src={pigeonBackSrc}
             alt="Bird Animation"
             className="w-full h-full object-cover"
           />
         </motion.div>
       </motion.div>
 
-      {/* 婚叫動畫 */}
-
       {/* 羽毛 */}
       <motion.div
         className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none"
+        style={willChangeStyle}
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1, x: [0, 10, 0] }}
+        animate={isLoaded ? { y: 0, opacity: 1, x: [0, 10, 0] } : { y: -100, opacity: 0, x: 0 }}
         transition={{
           delay: 2,
           duration: 4,
@@ -94,7 +106,7 @@ export default function ImageAnimation() {
           },
         }}>
         <img
-          src={isDark ? '/animation/dark_feather.webp' : '/animation/feather.webp'}
+          src={featherSrc}
           alt="Bird Animation"
           className="w-auto h-auto max-w-full max-h-full"
           style={{
@@ -106,12 +118,18 @@ export default function ImageAnimation() {
       {/* 前婚叫 */}
       <motion.div
         className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none"
+        style={willChangeStyle}
         initial={{ scale: 4, rotate: 90, opacity: 0 }}
-        animate={{
+        animate={isLoaded ? {
           scale: 1,
           rotate: 360,
           opacity: 1,
           y: [0, 10, 0],
+        } : {
+          scale: 4,
+          rotate: 90,
+          opacity: 0,
+          y: 0,
         }}
         transition={{
           delay: 2,
@@ -124,7 +142,7 @@ export default function ImageAnimation() {
           },
         }}>
         <img
-          src={isDark ? '/animation/dark_pigeon_front.webp' : '/animation/pigeon_front.webp'}
+          src={pigeonFrontSrc}
           alt="Bird Animation"
           className="w-auto h-auto max-w-full max-h-full -ml-[10%] -mb-[15%]"
           style={{
