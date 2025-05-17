@@ -23,11 +23,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <Banner />
         <main
-          className={clsx(
-            "block bg-[url('/images/bg.webp')] bg-center bg-cover antialiased relative",
-            '-safari:bg-fixed'
-          )}>
-          {children}
+          className={
+            clsx('relative')
+            // "block bg-[url('/images/bg.webp')] bg-center bg-cover antialiased relative",
+            // '-safari:bg-fixed'
+          }>
+          <div
+            className="sticky top-0 w-screen h-screen bg-center bg-cover -mb-[100dvh]"
+            style={{ backgroundImage: "url('/images/bg.webp')" }}
+          />
+          <div className="relative">{children}</div>
         </main>
         <FootMarquee />
         <Footer />

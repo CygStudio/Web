@@ -7,7 +7,7 @@ export default function Welcome() {
     <section
       id="welcome"
       className={clsx([
-        "block bg-[url('/images/rainbow.webp')] bg-center bg-cover antialiased",
+        "relative block bg-[url('/images/rainbow.webp')] bg-center bg-cover antialiased",
         '-safari:bg-fixed',
       ])}>
       <div className="flex flex-col text-white gap-4 font-semibold text-xl text-shadow-black-lg px-4 pt-8 container mx-auto">
