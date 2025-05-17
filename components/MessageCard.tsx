@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import StrokeText from '@/components/StrokeText'
 import clsx from 'clsx'
+import { useReadListStore } from '@/lib/store'
+import { noop } from 'lodash-es'
+
 export interface MarqueeItem {
   date: string
   name: string
@@ -12,16 +15,26 @@ export interface MarqueeItem {
   message: string
   image: string
 }
+type Props = {
+  item: MarqueeItem
+  onCardClick?: () => void
+}
 
 const ASSET_HOST = 'https://cygstudio.github.io/asset/'
 
-export function MessageCard({ item }: { item: MarqueeItem }) {
-  const [isRead, setIsRead] = useState(false)
+export function MessageCard({ item, onCardClick = noop }: Props) {
+  const { toggleReadItem, isRead } = useReadListStore()
+  const readId = `${item.name}-${item.date}`
 
-  const readClass = isRead ? 'opacity-50' : 'opacity-100'
+  const readClass = isRead(readId) ? 'opacity-50' : 'opacity-100'
+  const egg = isRead(readId) ? '/images/RGBegg.webp' : '/images/egg.webp'
+
   return (
-    <div className='mx-4 mb-12'>
-      <div className={clsx('relative flex flex-col max-w-md cursor-pointer', readClass)}>
+    <div className="mx-4 mb-12">
+      <div
+        className={clsx('relative flex flex-col max-w-md cursor-pointer', readClass)}
+        onClick={onCardClick}>
+        {/* 訊息 */}
         {item.message && (
           <>
             {/* 上方鳥圖片 */}
@@ -33,34 +46,35 @@ export function MessageCard({ item }: { item: MarqueeItem }) {
             <div className="relative p-1 bg-white rounded-2xl">
               <div className="bg-white rounded-2xl border-4 border-rose-500 p-3 flex items-center justify-center">
                 <p className="text-sm font-semibold whitespace-pre-wrap">{item.message}</p>
-
-                {/* 右下角金蛋 */}
-                <div
-                  className="absolute bottom-[-30px] right-[-10px]"
-                  onClick={() => setIsRead(_isRead => !_isRead)}>
-                  <img src="/images/egg.webp" alt="Golden Eggs" className="w-16 h-auto" />
-                </div>
               </div>
             </div>
           </>
         )}
+
+        {/* 圖片 */}
+        {item.image && (
+          <div className={clsx('relative mt-2 cursor-pointer', readClass)}>
+            <img src={ASSET_HOST + item.image} alt="Message Image" className="w-full h-auto" />
+          </div>
+        )}
       </div>
 
-      {item.image && (
-        <div className={clsx('relative mt-2 cursor-pointer', readClass)}>
-          <img src={ASSET_HOST + item.image} alt="Message Image" className="w-full h-auto" />
-        </div>
-      )}
-
       {/* 底部用戶資訊 */}
-      <div className="flex items-center justify-center mt-2 cursor-pointer">
+      <div
+        className="flex relative items-center justify-center mt-2 cursor-pointer"
+        onClick={() => toggleReadItem(readId)}>
+        {/* 蛋蛋 */}
+        <div className="absolute top-[-30px] right-[-10px]">
+          <img src={egg} alt="Golden Eggs" className="w-16 h-auto" />
+        </div>
+
         {/* 頭像 */}
-        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mr-3 overflow-hidden shrink-0">
+        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center mr-3 overflow-hidden shrink-0">
           <Image src={ASSET_HOST + item.avatar} alt={item.name} width={48} height={48} />
         </div>
 
         {/* 用戶名 */}
-        <div className="text-lg font-bold text-black">
+        <div className="text-xs sm:text-sm font-bold text-black">
           <StrokeText text={item.name} strokeColor="white" textColor="black" />
         </div>
       </div>

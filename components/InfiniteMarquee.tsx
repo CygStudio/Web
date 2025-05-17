@@ -43,9 +43,6 @@ export default function InfiniteMarquee({ items, className }: InfiniteMarqueePro
                 <MessageCard key={`${item.name}-${item.date}`} item={item} />
               ))}
             </Duplicate>
-            {/* {firstHalf.map(item => (
-              <MessageCard key={item.date} item={item} />
-            ))} */}
           </div>
         </div>
 

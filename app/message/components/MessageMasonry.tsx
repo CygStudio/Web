@@ -65,8 +65,8 @@ export default function MessageMasonry() {
         }}>
         <Masonry gutter="2rem">
           {items.map((item, index) => (
-            <FadeInWhenVisible key={index} onClick={() => setCurrentIndex(index)}>
-              <MessageCard item={item} />
+            <FadeInWhenVisible key={index}>
+              <MessageCard item={item} onCardClick={() => setCurrentIndex(index)} />
             </FadeInWhenVisible>
           ))}
         </Masonry>
