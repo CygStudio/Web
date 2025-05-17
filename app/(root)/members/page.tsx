@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
+import { ProjectMembers } from './components/ProjectMembers'
 
 type Item = {
   name: string
@@ -14,13 +15,15 @@ type MembersData = {
   memberList: Item[]
 }
 
-export default async function FilmPage() {
+export default async function MembersPage() {
   const items: MembersData = await fetch('https://cygstudio.github.io/asset/members')
     .then(res => res.json())
     .catch(() => { return { staffList: [], memberList: [] } })
 
   return (
     <section className="container mx-auto">
+      <ProjectMembers />
+
       <h1 className="text-4xl font-bold text-center container mx-auto px-4 py-12">工作人員</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
         {items.staffList.map((item: Item) => (
