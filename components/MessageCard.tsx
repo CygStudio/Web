@@ -18,11 +18,12 @@ export interface MarqueeItem {
 type Props = {
   item: MarqueeItem
   onCardClick?: () => void
+  imgClassName?: string
 }
 
 const ASSET_HOST = 'https://cygstudio.github.io/asset/'
 
-export function MessageCard({ item, onCardClick = noop }: Props) {
+export function MessageCard({ item, onCardClick = noop, imgClassName }: Props) {
   const { toggleReadItem, isRead } = useReadListStore()
   const readId = `${item.name}-${item.date}`
 
@@ -30,13 +31,13 @@ export function MessageCard({ item, onCardClick = noop }: Props) {
   const egg = isRead(readId) ? '/images/RGBegg.webp' : '/images/egg.webp'
 
   return (
-    <div className="mx-4 mb-12">
+    <div className={clsx('mx-4 mb-12')}>
       <div
-        className={clsx('relative flex flex-col max-w-md cursor-pointer', readClass)}
+        className={clsx('relative flex flex-col cursor-pointer', readClass)}
         onClick={onCardClick}>
         {/* 訊息 */}
         {item.message && (
-          <>
+          <div className='max-w-md'>
             {/* 上方鳥圖片 */}
             <div className="relative -mb-1">
               <img src="/images/bird.webp" alt="Bird" className="w-56 h-auto mx-auto" />
@@ -48,13 +49,13 @@ export function MessageCard({ item, onCardClick = noop }: Props) {
                 <p className="text-sm font-semibold whitespace-pre-wrap">{item.message}</p>
               </div>
             </div>
-          </>
+          </div>
         )}
 
         {/* 圖片 */}
         {item.image && (
-          <div className={clsx('relative mt-2 cursor-pointer', readClass)}>
-            <img src={ASSET_HOST + item.image} alt="Message Image" className="w-full h-auto" />
+          <div className={clsx('relative mt-2 cursor-pointer', readClass, imgClassName)}>
+            <img src={ASSET_HOST + item.image} alt="Message Image" className="object-contain object-center max-w-full max-h-full" />
           </div>
         )}
       </div>

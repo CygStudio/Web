@@ -73,7 +73,10 @@ export default function MessageMasonry() {
       </ResponsiveMasonry>
       <Lightbox
         items={items.map(item => (
-          <MessageCard item={item} />
+          <MessageCard
+            imgClassName="w-full h-[calc(100vh-40px)] flex items-center justify-center"
+            item={item}
+          />
         ))}
         currentIndex={currentIndex}
         onIndexChange={setCurrentIndex}
