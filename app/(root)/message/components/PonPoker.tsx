@@ -13,7 +13,7 @@ const swiperParameters: SwiperProps = {
   modules: [EffectCards, Mousewheel, Navigation],
   effect: 'cards',
   grabCursor: true,
-  initialSlide: 2,
+  initialSlide: 0,
   speed: 500,
   loop: false,
   mousewheel: {
@@ -53,7 +53,7 @@ const PokerSwiper = () => {
   }, [])
 
   return (
-    <Swiper {...swiperParameters} spaceBetween={20} className="h-96 mb-12">
+    <Swiper {...swiperParameters} spaceBetween={20} className="h-96 mb-12 w-full">
       {items.map((img, index) => (
         <SwiperSlide key={img}>
           <div className="w-full h-full aspect-[784/1024] rounded-3xl">
@@ -62,7 +62,7 @@ const PokerSwiper = () => {
               alt="youtube"
               width={784}
               height={1024}
-              className="rounded-lg object-contain object-center"
+              className="rounded-lg object-contain object-center border border-gray-500"
             />
           </div>
         </SwiperSlide>

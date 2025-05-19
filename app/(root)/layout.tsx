@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             clsx('relative')
           }>
           <div
-            className="sticky top-0 w-screen h-screen bg-center bg-cover -mb-[100dvh]"
+            className="sticky top-0 w-full h-screen bg-center bg-cover -mb-[100vh]"
             style={{ backgroundImage: "url('/images/bg.webp')" }}
           />
           <div className="relative">{children}</div>
