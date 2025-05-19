@@ -24,19 +24,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-hant-tw">
-      <body className="font-sans overflow-x-hidden antialiased">
+      <body className="font-sans overflow-x-hidden">
         <ClientHooks />
         <Header />
         <Banner />
         <main
-          className={
-            clsx('relative')
-          }>
-          <div
-            className="sticky top-0 w-full h-screen bg-center bg-cover -mb-[100vh]"
-            style={{ backgroundImage: "url('/images/bg.webp')" }}
-          />
-          <div className="relative">{children}</div>
+          className={clsx(
+            "block bg-[url('/images/bg.webp')] bg-center relative",
+            '-safari:bg-fixed -safari:bg-cover',
+          )}>
+          {children}
         </main>
         <FootMarquee />
         <Footer />
