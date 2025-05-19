@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Banner />
         <main
           className={clsx(
-            "block bg-[url('/images/bg.webp')] bg-center relative",
+            "block bg-[url('/images/bg.webp')] bg-center relative z-10 mt-[100vh]",
             '-safari:bg-fixed -safari:bg-cover',
           )}>
           {children}
