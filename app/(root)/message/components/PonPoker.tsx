@@ -20,6 +20,9 @@ const swiperParameters: SwiperProps = {
     invert: false,
   },
   allowTouchMove: true,
+  // 增加 passive 配置以解決事件監聽器警告
+  touchEventsTarget: 'wrapper',
+  passiveListeners: true,
   cardsEffect: {
     perSlideOffset: 50,
     perSlideRotate: 10,

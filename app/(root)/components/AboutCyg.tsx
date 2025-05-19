@@ -167,7 +167,7 @@ function AnimatedRow({ imagePosition, imageUrl, children }: AnimatedRowProps) {
   }
 
   return (
-    <div ref={rowRef} className="flex flex-col md:flex-row items-center gap-8 py-16">
+    <div ref={rowRef} className="flex flex-col md:flex-row items-center gap-8 py-16 relative">
       {imagePosition === 'right' ? (
         <>
           <div className="w-full md:w-2/3">
