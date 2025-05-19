@@ -5,8 +5,8 @@ export default async function VideoSectionList() {
   const items: Common = await fetch('https://cygstudio.github.io/asset/common')
     .then(res => res.json())
     .catch(() => {
-      return { videoList: [] }
+      return { behindScenes: [] }
     })
 
-  return items.videoList.map((item, index) => <VideoSection key={index} videoItem={item} />)
+  return items.behindScenes.map((item, index) => <VideoSection key={index} videoItem={item} />)
 }

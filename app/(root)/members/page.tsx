@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
 import { ProjectMembers } from './components/ProjectMembers'
+import VideoSection from './components/VideoSection'
 
 type Item = {
   name: string
@@ -23,6 +24,8 @@ export default async function MembersPage() {
   return (
     <section className="container mx-auto">
       <ProjectMembers />
+
+      <VideoSection />
 
       <h1 className="text-4xl font-bold text-center container mx-auto px-4 py-12">工作人員</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">

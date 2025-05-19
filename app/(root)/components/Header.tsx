@@ -28,7 +28,7 @@ export default function Header() {
     },
     {
       href: '/members',
-      text: '幕後花絮',
+      text: '回熙轉憶',
     },
   ]
 
