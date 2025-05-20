@@ -7,7 +7,7 @@ export default function Banner() {
   return (
     <section
       id="banner"
-      className="bg-[#332323] flex flex-col justify-center items-center h-screen w-screen top-0 fixed">
+      className="bg-[#332323] flex flex-col justify-center items-center h-screen w-screen">
       <HeroAnimation />
     </section>
   )

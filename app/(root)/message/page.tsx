@@ -15,7 +15,7 @@ export default async function MessagePage() {
         <MessageMasonry />
       </section>
 
-      <section className="container mx-auto my-8 overflow-hidden">
+      <section className="container mx-auto mt-8 overflow-hidden">
         <h2 className="text-2xl font-bold text-[#293845] text-center my-8">PON哥的婚叫撲克牌</h2>
         <PonPoker />
       </section>
