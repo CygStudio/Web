@@ -22,7 +22,7 @@ export default function StandingSign() {
   const [items, setItems] = useState<Item[]>([])
   useEffect(() => {
     const fetchData = async () => {
-      const items: Item[] = await fetch('https://cygstudio.github.io/asset/travel')
+      const items: Item[] = await fetch('https://cygasset.sid.tw/travel')
         .then(res => res.json())
         .catch(() => [])
       setItems(items)
@@ -92,7 +92,7 @@ const MasonryItem = ({
   className?: string
   imgClassName?: string
 }) => {
-  const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+  const ASSET_HOST = 'https://cygasset.sid.tw/'
 
   return (
     <div key={index} className={clsx('relative cursor-pointer', className)} onClick={onClick}>

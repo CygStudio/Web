@@ -21,7 +21,7 @@ type Props = {
   imgClassName?: string
 }
 
-const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+const ASSET_HOST = 'https://cygasset.sid.tw/'
 
 export function MessageCard({ item, onCardClick = noop, imgClassName }: Props) {
   const { toggleReadItem, isRead } = useReadListStore()

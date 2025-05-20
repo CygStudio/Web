@@ -40,13 +40,13 @@ const swiperParameters: SwiperProps = {
   },
 }
 
-const ASSET_HOST = 'https://cygstudio.github.io/asset/message/poker'
+const ASSET_HOST = 'https://cygasset.sid.tw/message/poker'
 const PokerSwiper = () => {
   const [items, setItems] = useState<string[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const items: string[] = await fetch('https://cygstudio.github.io/asset/message/poker')
+      const items: string[] = await fetch('https://cygasset.sid.tw/message/poker')
         .then(res => res.json())
         .catch(() => [])
 

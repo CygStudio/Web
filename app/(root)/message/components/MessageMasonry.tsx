@@ -44,7 +44,7 @@ export default function MessageMasonry() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const items = await fetch('https://cygstudio.github.io/asset/message')
+      const items = await fetch('https://cygasset.sid.tw/message')
         .then(res => res.json())
         .catch(() => null)
 
@@ -53,7 +53,7 @@ export default function MessageMasonry() {
     fetchData()
   }, [])
 
-  const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+  const ASSET_HOST = 'https://cygasset.sid.tw/'
 
   return (
     <>

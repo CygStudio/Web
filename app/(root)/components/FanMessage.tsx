@@ -2,7 +2,7 @@ import InfiniteMarquee from '@/components/InfiniteMarquee'
 import StrokeText from '@/components/StrokeText'
 
 export default async function Home() {
-  const items = await fetch('https://cygstudio.github.io/asset/message')
+  const items = await fetch('https://cygasset.sid.tw/message')
     .then(res => res.json())
     .catch(() => null)
 

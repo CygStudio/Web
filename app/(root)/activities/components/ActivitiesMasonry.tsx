@@ -45,7 +45,7 @@ export default function ActivitiesMasonry() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const items: Item[] = await fetch('https://cygstudio.github.io/asset/activities')
+      const items: Item[] = await fetch('https://cygasset.sid.tw/activities')
         .then(res => res.json())
         .catch(() => [])
 
@@ -95,7 +95,7 @@ export default function ActivitiesMasonry() {
     return null
   }
 
-  const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+  const ASSET_HOST = 'https://cygasset.sid.tw/'
 
   return (
     <ResponsiveMasonry
@@ -117,7 +117,7 @@ export default function ActivitiesMasonry() {
 }
 
 const Card = ({ item }: { item: Node }) => {
-  const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+  const ASSET_HOST = 'https://cygasset.sid.tw/'
 
   const Image = () => (
     <img src={ASSET_HOST + item.content} alt={item.group} className="w-full h-auto" />

@@ -17,7 +17,7 @@ type MembersData = {
 }
 
 export default async function MembersPage() {
-  const items: MembersData = await fetch('https://cygstudio.github.io/asset/members')
+  const items: MembersData = await fetch('https://cygasset.sid.tw/members')
     .then(res => res.json())
     .catch(() => { return { staffList: [], memberList: [] } })
 
@@ -45,7 +45,7 @@ export default async function MembersPage() {
 }
 
 const StaffCard = ({ item }: { item: Item }) => {
-  const ASSET_HOST = 'https://cygstudio.github.io/asset/'
+  const ASSET_HOST = 'https://cygasset.sid.tw/'
 
   return (
     <Card className="flex flex-col items-center text-center bg-gray-200">
