@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export function ProjectMembers() {
   return (
-    <section id="cygintroduction" className="my-8 relative overflow-hidden">
+    <section id="cygintroduction" className="py-8 relative overflow-hidden">
       <ul className="relative z-10 max-w-[640px] px-8 sm:px-12 py-16 bg-[url('/images/熙歌周表.webp')] bg-center bg-cover sm:bg-contain bg-no-repeat aspect-[2372/3575] mx-auto flex flex-col gap-1 justify-around">
         <ListItem title="【影片拍攝參與人員】" />
         <ListItem title="北部">DJ DÄZEE、Owen52、梓Azusa、歐咖吶哋島油、蛋蛋王幽靈、Euryka尤里卡、哭麻糬(クマ吉)、葉祤[語]、派大客、白毛BaimoRay、哈斯塔、婚叫E、ラスキ浮雲、棠Tang、落羽</ListItem>

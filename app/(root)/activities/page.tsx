@@ -3,7 +3,7 @@ import ActivitiesMasonry from './components/ActivitiesMasonry'
 
 export default async function ActivitiesPage() {
   return (
-    <section className="container mx-auto container my-8">
+    <section className="container mx-auto py-8">
       <div className="text-[#293845] text-center flex flex-col gap-4">
         <h1 className="text-4xl font-bold">工作室活動</h1>
         <p className="text-xl font-bold">
