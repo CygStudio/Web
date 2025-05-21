@@ -12,12 +12,16 @@ import clsx from 'clsx'
 
 export const metadata: Metadata = {
   title: '2025 熙歌工作室慶生網頁',
-  description: '熙歌工作室 2025 隆重鉅獻，歡迎加入婚叫溫暖的大家庭',
+  description: '熙歌工作室 2025 隆重鉅獻，歡迎加入婚叫們溫暖的大家庭',
   icons: {
     icon: '/images/icon.webp'
   },
   openGraph: {
-    images: '/images/QC.webp'
+    images: [{
+      url: 'https://cyg.sid.tw/images/main.webp',
+      width: 1024,
+      height: 576,
+    }]
   }
 }
 
